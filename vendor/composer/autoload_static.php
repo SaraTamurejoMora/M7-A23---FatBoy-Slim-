@@ -56,6 +56,7 @@ class ComposerStaticInit9aa16f82b99ffc173810288fbdc9dba4
             'Symfony\\Component\\Filesystem\\' => 29,
             'Symfony\\Component\\Console\\' => 26,
             'Spatie\\ArrayToXml\\' => 18,
+            'Slim\\Views\\' => 11,
             'Slim\\Tests\\' => 11,
             'Slim\\Psr7\\' => 10,
             'Slim\\Http\\' => 10,
@@ -122,9 +123,9 @@ class ComposerStaticInit9aa16f82b99ffc173810288fbdc9dba4
     public static $prefixDirsPsr4 = array (
         'phpDocumentor\\Reflection\\' => 
         array (
-            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
+            0 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
-            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
+            2 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
         ),
         'XdgBaseDir\\' => 
         array (
@@ -174,6 +175,10 @@ class ComposerStaticInit9aa16f82b99ffc173810288fbdc9dba4
         array (
             0 => __DIR__ . '/..' . '/spatie/array-to-xml/src',
         ),
+        'Slim\\Views\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/php-view/src',
+        ),
         'Slim\\Tests\\' => 
         array (
             0 => __DIR__ . '/../..' . '/tests',
@@ -196,13 +201,13 @@ class ComposerStaticInit9aa16f82b99ffc173810288fbdc9dba4
         ),
         'Psr\\Http\\Server\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
-            1 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+            0 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+            1 => __DIR__ . '/..' . '/psr/http-server-handler/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-message/src',
-            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+            0 => __DIR__ . '/..' . '/psr/http-factory/src',
+            1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
         'Psr\\Container\\' => 
         array (
