@@ -1,10 +1,7 @@
 <?php
-// Configuración de la base de datos SQLite
-$dbfile = 'biografias.db';  // Nombre del archivo de la base de datos SQLite
+$dbfile = 'biografias.db';
 
-// Crear la conexión
 try {
-    // Conectar a la base de datos SQLite
     $db = new SQLite3($dbfile);
 
     echo "Conexión exitosa a la base de datos SQLite.<br>";
@@ -13,7 +10,6 @@ try {
     exit;
 }
 
-// Crear la tabla para almacenar las biografías y la información adicional si no existe
 $query = "
 CREATE TABLE IF NOT EXISTS biografias (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,12 +25,9 @@ CREATE TABLE IF NOT EXISTS biografias (
 );
 ";
 
-// Ejecutar la consulta de creación de la tabla
 $db->exec($query);
 
-// Insertar biografías y datos adicionales de los grupos
 $grupos = [
-    // Grupos originales
     [
         'Artic Monkeys', 'Artic Monkeys es una banda de rock británica formada en Sheffield en 2002. Conocidos por su estilo innovador en el indie rock y post-punk revival.',
         'Whatever People Say I Am, That\'s What I\'m Not, Favourite Worst Nightmare, Humbug, Suck It and See, AM, Tranquility Base Hotel & Casino',
@@ -61,7 +54,7 @@ $grupos = [
         'Hatsune Miku: Project Diva, Hatsune Miku: Project Diva F, Hatsune Miku: VR Future Live',
         'World is Mine, Senbonzakura, Tell Your World, Melt',
         'Japan Gold Disc Award, Tokyo Anime Award',
-        'https://i.scdn.co/image/ab67616d0000b2739ebc45791dad84d03a71c0e0', 2007, 'N/A', 'Vocaloid, J-pop'
+        'https://i.scdn.co/image/ab67616d0000b2739ebc45791dad84d03a71c0e0', 2007, 'Hatsune Miku', 'Vocaloid, J-pop'
     ],
     [
         'Ado', 'Ado es una cantante japonesa conocida por su potente voz y su estilo musical único que combina pop, rock y elementos electrónicos.',
@@ -70,7 +63,6 @@ $grupos = [
         'No tiene premios importantes aún, pero se ha ganado un gran número de seguidores y reconocimientos en línea.',
         'https://i.scdn.co/image/ab67616d0000b2732cd7888600aafe2eb8b6be9f', 2019, 'Ado (voz virtual)', 'Pop, Rock, Electronic'
     ],
-    // Nuevos grupos/artistas solicitados
     [
         'Bad Bunny', 'Bad Bunny es un cantante y compositor puertorriqueño de reguetón y trap latino. Ha revolucionado la música urbana en todo el mundo.',
         'X 100PRE, YHLQMDLG, El Último Tour Del Mundo, Un Verano Sin Ti',
@@ -185,12 +177,9 @@ $grupos = [
     ]
 ];
 
-// Preparar la sentencia de inserción
 $stmt = $db->prepare("INSERT INTO biografias (nombre_grupo, biografia, discos, canciones_famosas, premios, imagen, año_debut, integrantes, genero_musical) VALUES (:nombre_grupo, :biografia, :discos, :canciones_famosas, :premios, :imagen, :año_debut, :integrantes, :genero_musical)");
 
-// Insertar los datos de cada grupo
 foreach ($grupos as $grupo) {
-    // Enlazar los parámetros
     $stmt->bindValue(':nombre_grupo', $grupo[0], SQLITE3_TEXT);
     $stmt->bindValue(':biografia', $grupo[1], SQLITE3_TEXT);
     $stmt->bindValue(':discos', $grupo[2], SQLITE3_TEXT);
@@ -201,7 +190,6 @@ foreach ($grupos as $grupo) {
     $stmt->bindValue(':integrantes', $grupo[7], SQLITE3_TEXT);
     $stmt->bindValue(':genero_musical', $grupo[8], SQLITE3_TEXT);
 
-    // Ejecutar la consulta
     $stmt->execute();
 }
 
